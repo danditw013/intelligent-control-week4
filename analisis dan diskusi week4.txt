@@ -1,0 +1,46 @@
+ANALISIS
+1. Bagaimana performa agen dalam mengontrol environment CartPole?
+Performa agen dalam mengontrol CartPole sangat bergantung pada algoritma yang digunakan, seperti Deep Q-Network (DQN), SARSA, atau metode berbasis Policy Gradient. Agen yang dilatih dengan baik seharusnya mampu menyeimbangkan tiang selama mungkin di atas kereta dengan meminimalkan kesalahan dan membuat keputusan yang optimal berdasarkan keadaan saat ini. Biasanya, agen RL yang telah dilatih dengan benar bisa mencapai skor maksimal 200 (episode selesai jika skor mencapai 200), yang menunjukkan bahwa agen telah belajar untuk menjaga keseimbangan CartPole secara optimal. Jika agen masih dalam tahap awal atau menggunakan parameter yang kurang optimal, skornya bisa lebih rendah dan bervariasi.
+2. Bagaimana perubahan parameter (misal: gamma, epsilon, learning rate) mempengaruhi kinerja agen?
+Beberapa parameter penting dalam Reinforcement Learning (RL) yang mempengaruhi performa agen:
+>>Gamma (𝛾 - Discount Factor):
+Jika 𝛾 tinggi (misal: 0.99) → agen lebih fokus pada reward jangka panjang, sehingga strategi yang diambil lebih stabil dan optimal.
+Jika 𝛾 rendah (misal: 0.5) → agen lebih fokus pada reward jangka pendek, sering kali menyebabkan perilaku yang kurang optimal.
+>>Epsilon (𝜀 - Exploration Rate dalam Epsilon-Greedy Strategy):
+Jika 𝜀 tinggi (misal: 1.0) → agen lebih sering mencoba aksi baru (eksplorasi) daripada mengeksploitasi kebijakan terbaik yang sudah ditemukan.
+Jika 𝜀 rendah (misal: 0.01) → agen lebih banyak mengeksploitasi kebijakan terbaiknya, tetapi berisiko terjebak pada solusi sub-optimal.
+Biasanya 𝜀 didekresikan seiring waktu agar agen dapat mengeksplorasi di awal dan mengeksploitasi kebijakan terbaik setelah pelatihan cukup lama.
+>>Learning Rate (α - Laju Pembelajaran):
+Jika α tinggi (misal: 0.1 - 0.01) → agen belajar lebih cepat tetapi bisa menyebabkan instabilitas dan gagal menemukan kebijakan optimal.
+Jika α terlalu rendah (misal: 0.0001) → agen belajar sangat lambat dan mungkin tidak mencapai performa optimal dalam waktu yang wajar.
+Penyesuaian parameter ini bergantung pada eksperimen dan tuning hyperparameter agar agen bisa mencapai performa terbaiknya.
+3. Apa tantangan yang muncul selama pelatihan agen RL?
+Beberapa tantangan dalam melatih agen RL di environment CartPole atau environment RL lainnya:
+>>Exploration vs Exploitation Trade-off
+Agen harus menemukan keseimbangan antara eksplorasi aksi baru dan mengeksploitasi kebijakan terbaik yang sudah ditemukan. Jika eksplorasi terlalu sedikit, agen bisa terjebak dalam solusi sub-optimal.
+>>Overfitting ke Environment Tertentu
+Jika agen terlalu terlatih pada satu konfigurasi environment tanpa variasi, maka ketika parameter environment berubah, agen bisa kesulitan beradaptasi.
+>>Hyperparameter Tuning yang Kompleks
+Pemilihan 𝛾, α, 𝜀, dan parameter lainnya sangat berpengaruh pada performa agen. Tanpa tuning yang baik, agen bisa belajar terlalu lambat atau gagal mencapai solusi optimal.
+>>Instabilitas dalam Training
+Terutama dalam algoritma berbasis neural network seperti DQN, pembelajaran bisa menjadi tidak stabil jika update Q-values terlalu agresif atau jika replay buffer tidak cukup bervariasi.
+>>Sparse Reward Problem
+Dalam beberapa environment RL, reward hanya diberikan setelah langkah tertentu (misalnya, hanya jika CartPole tetap seimbang selama 200 step). Hal ini bisa membuat agen sulit belajar jika tidak ada sinyal pembelajaran yang cukup.
+
+DISKUSI
+1. Perbedaan RL dan Supervised Learning dalam Sistem Kendali
+RL belajar melalui trial and error dengan reward dari environment, sedangkan supervised learning belajar dari dataset berlabel. RL lebih adaptif untuk sistem kendali dinamis seperti robotika dan kendaraan otonom, sementara supervised learning cocok untuk tugas prediksi atau klasifikasi.
+2. Optimalisasi Eksplorasi-Eksploitasi dalam RL
+>Epsilon-Greedy Decay: Mengurangi eksplorasi seiring waktu agar agen fokus pada strategi terbaik.
+>UCB (Upper Confidence Bound): Menyeimbangkan eksplorasi dan eksploitasi dengan mempertimbangkan ketidakpastian.
+>Boltzmann Exploration: Memilih aksi berdasarkan probabilitas eksponensial nilai Q.
+>Curiosity-Driven Learning: Agen diberi reward tambahan untuk menjelajahi kondisi baru.
+3. Aplikasi RL dalam Sistem Kendali
+>Robotika: Mengoptimalkan gerakan robot industri.
+>Kendaraan Otonom: Navigasi dan penghindaran tabrakan.
+>Optimasi Jaringan: Alokasi bandwidth dinamis.
+>Drone dan UAV: Penerbangan adaptif berdasarkan lingkungan.
+>Sistem Energi: Kontrol smart grid & HVAC untuk efisiensi daya.
+>Traffic Control: Pengaturan lampu lalu lintas cerdas.
+
+
